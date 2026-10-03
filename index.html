@@ -1,530 +1,498 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>For My Boyfriend 💗</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background:
+            radial-gradient(circle at 20% 20%, #ffd1e2 0%, transparent 25%),
+            radial-gradient(circle at 80% 30%, #ffc4da 0%, transparent 25%),
+            linear-gradient(135deg, #fff0f6, #ffd9e8, #fff5f9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    /* BIG HEART STICKERS */
+
+    .big-heart {
+        position: absolute;
+        font-size: 110px;
+        filter: drop-shadow(0 10px 15px rgba(255, 72, 130, 0.25));
+        animation: floatHeart 4s ease-in-out infinite;
+        z-index: 2;
+    }
+
+    .heart1 {
+        top: 5%;
+        left: 4%;
+        transform: rotate(-15deg);
+    }
+
+    .heart2 {
+        top: 12%;
+        right: 4%;
+        font-size: 95px;
+        animation-delay: 1s;
+        transform: rotate(15deg);
+    }
+
+    .heart3 {
+        bottom: 5%;
+        left: 5%;
+        font-size: 90px;
+        animation-delay: 2s;
+    }
+
+    .heart4 {
+        bottom: 7%;
+        right: 5%;
+        font-size: 115px;
+        animation-delay: 1.5s;
+    }
+
+    /* MAIN CARD */
+
+    .card {
+        width: 90%;
+        max-width: 550px;
+        padding: 45px 30px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(18px);
+        border: 3px solid rgba(255, 255, 255, 0.9);
+        border-radius: 40px;
+        box-shadow:
+            0 20px 60px rgba(255, 75, 135, 0.25),
+            inset 0 0 30px rgba(255, 255, 255, 0.5);
+        position: relative;
+        z-index: 10;
+        animation: cardAppear 1.2s ease;
+    }
+
+    /* BIG CENTER HEART */
+
+    .main-heart {
+        font-size: 100px;
+        display: inline-block;
+        filter:
+            drop-shadow(0 0 10px #ff80a8)
+            drop-shadow(0 0 25px #ffb4ca);
+        animation: heartbeat 1.3s infinite;
+    }
+
+    h1 {
+        margin-top: 10px;
+        color: #ff477f;
+        font-size: 38px;
+        text-shadow: 2px 3px 8px rgba(255, 71, 127, 0.2);
+    }
+
+    .subtitle {
+        margin-top: 10px;
+        color: #777;
+        font-size: 18px;
+    }
+
+    /* LOVE MESSAGE */
+
+    .message {
+        margin: 25px 0;
+        padding: 22px;
+        background: rgba(255, 221, 233, 0.65);
+        border-radius: 25px;
+        color: #666;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .pink {
+        color: #ff477f;
+        font-weight: bold;
+    }
+
+    /* BUTTON */
+
+    button {
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        background: linear-gradient(
+            135deg,
+            #ff477f,
+            #ff8fb3
+        );
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(255, 71, 127, 0.35);
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+    }
+
+    button:active {
+        transform: scale(0.95);
+    }
+
+    /* SECRET MESSAGE */
+
+    #secret {
+        display: none;
+        margin-top: 25px;
+        color: #ff477f;
+        font-size: 20px;
+        font-weight: bold;
+        animation: appear 1s ease;
+    }
+
+    /* CUTE STICKERS */
+
+    .sticker {
+        position: absolute;
+        font-size: 45px;
+        z-index: 11;
+        animation: stickerFloat 3s ease-in-out infinite;
+    }
+
+    .bear {
+        top: -35px;
+        left: -30px;
+    }
+
+    .kiss {
+        top: -30px;
+        right: -25px;
+        animation-delay: 0.5s;
+    }
+
+    .sparkle {
+        bottom: 20px;
+        left: -30px;
+        animation-delay: 1s;
+    }
+
+    .love-sticker {
+        bottom: 15px;
+        right: -25px;
+        animation-delay: 1.5s;
+    }
+
+    /* FLOATING HEARTS */
+
+    .floating-heart {
+        position: fixed;
+        bottom: -50px;
+        font-size: 25px;
+        animation: rise 7s linear infinite;
+        opacity: 0.8;
+        z-index: 1;
+    }
+
+    .floating-heart:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .floating-heart:nth-child(2) {
+        left: 25%;
+        animation-delay: 2s;
+    }
+
+    .floating-heart:nth-child(3) {
+        left: 40%;
+        animation-delay: 4s;
+    }
+
+    .floating-heart:nth-child(4) {
+        left: 60%;
+        animation-delay: 1s;
+    }
+
+    .floating-heart:nth-child(5) {
+        left: 75%;
+        animation-delay: 3s;
+    }
+
+    .floating-heart:nth-child(6) {
+        left: 90%;
+        animation-delay: 5s;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
         }
 
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            background:
-                radial-gradient(circle at 20% 20%, #ffd1e2 0%, transparent 25%),
-                radial-gradient(circle at 80% 30%, #ffc4da 0%, transparent 25%),
-                linear-gradient(135deg, #fff0f6, #ffd9e8, #fff5f9);
+        50% {
+            transform: scale(1.18);
+        }
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+    @keyframes floatHeart {
+        0%, 100% {
+            transform: translateY(0) rotate(-10deg);
         }
 
-        /* ---------------- BIG HEART STICKERS ---------------- */
+        50% {
+            transform: translateY(-18px) rotate(10deg);
+        }
+    }
 
-        .big-heart {
-            position: absolute;
-            font-size: 110px;
-            filter: drop-shadow(0 10px 15px rgba(255, 72, 130, 0.25));
-            animation: floatHeart 4s ease-in-out infinite;
-            z-index: 2;
+    @keyframes stickerFloat {
+        0%, 100% {
+            transform: translateY(0) rotate(-5deg);
         }
 
-        .heart1 {
-            top: 5%;
-            left: 4%;
-            transform: rotate(-15deg);
+        50% {
+            transform: translateY(-10px) rotate(5deg);
+        }
+    }
+
+    @keyframes rise {
+        0% {
+            transform: translateY(0) scale(0.5);
+            opacity: 0;
         }
 
-        .heart2 {
-            top: 12%;
-            right: 4%;
-            font-size: 95px;
-            animation-delay: 1s;
-            transform: rotate(15deg);
+        20% {
+            opacity: 1;
         }
 
-        .heart3 {
-            bottom: 5%;
-            left: 5%;
-            font-size: 90px;
-            animation-delay: 2s;
+        100% {
+            transform: translateY(-110vh) scale(1.3) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes cardAppear {
+        from {
+            opacity: 0;
+            transform: scale(0.8) translateY(40px);
         }
 
-        .heart4 {
-            bottom: 7%;
-            right: 5%;
-            font-size: 115px;
-            animation-delay: 1.5s;
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
         }
 
-        /* ---------------- MAIN CARD ---------------- */
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
+    /* MOBILE */
+
+    @media (max-width: 600px) {
         .card {
-            width: 90%;
-            max-width: 550px;
-            padding: 45px 30px;
-            text-align: center;
-
-            background: rgba(255,255,255,0.78);
-            backdrop-filter: blur(18px);
-
-            border: 3px solid rgba(255,255,255,0.9);
-            border-radius: 40px;
-
-            box-shadow:
-                0 20px 60px rgba(255, 75, 135, 0.25),
-                inset 0 0 30px rgba(255,255,255,0.5);
-
-            position: relative;
-            z-index: 10;
-
-            animation: cardAppear 1.2s ease;
-        }
-
-        /* ---------------- BIG CENTER HEART ---------------- */
-
-        .main-heart {
-            font-size: 100px;
-            display: inline-block;
-
-            filter:
-                drop-shadow(0 0 10px #ff80a8)
-                drop-shadow(0 0 25px #ffb4ca);
-
-            animation: heartbeat 1.3s infinite;
+            padding: 35px 20px;
         }
 
         h1 {
-            margin-top: 10px;
-            color: #ff477f;
-            font-size: 38px;
-            text-shadow: 2px 3px 8px rgba(255, 71, 127, 0.2);
+            font-size: 29px;
         }
 
-        .subtitle {
-            margin-top: 10px;
-            color: #777;
-            font-size: 18px;
+        .main-heart {
+            font-size: 80px;
         }
 
-        /* ---------------- LOVE MESSAGE ---------------- */
-
-        .message {
-            margin: 25px 0;
-            padding: 22px;
-
-            background: rgba(255, 221, 233, 0.65);
-            border-radius: 25px;
-
-            color: #666;
-            font-size: 16px;
-            line-height: 1.8;
+        .big-heart {
+            font-size: 65px;
         }
 
-        .pink {
-            color: #ff477f;
-            font-weight: bold;
+        .heart2,
+        .heart3 {
+            font-size: 55px;
         }
-
-        /* ---------------- BUTTON ---------------- */
-
-        button {
-            border: none;
-            padding: 15px 30px;
-
-            border-radius: 50px;
-
-            background: linear-gradient(
-                135deg,
-                #ff477f,
-                #ff8fb3
-            );
-
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 10px 25px rgba(255, 71, 127, 0.35);
-
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: scale(1.08);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        /* ---------------- SECRET MESSAGE ---------------- */
-
-        #secret {
-            display: none;
-            margin-top: 25px;
-
-            color: #ff477f;
-            font-size: 20px;
-            font-weight: bold;
-
-            animation: appear 1s ease;
-        }
-
-        /* ---------------- CUTE STICKERS ---------------- */
 
         .sticker {
-            position: absolute;
-            font-size: 45px;
-            z-index: 11;
-
-            animation: stickerFloat 3s ease-in-out infinite;
+            font-size: 32px;
         }
+    }
+</style>
+```
 
-        .bear {
-            top: -35px;
-            left: -30px;
-        }
-
-        .kiss {
-            top: -30px;
-            right: -25px;
-            animation-delay: 0.5s;
-        }
-
-        .sparkle {
-            bottom: 20px;
-            left: -30px;
-            animation-delay: 1s;
-        }
-
-        .love-sticker {
-            bottom: 15px;
-            right: -25px;
-            animation-delay: 1.5s;
-        }
-
-        /* ---------------- FLOATING HEARTS ---------------- */
-
-        .floating-heart {
-            position: fixed;
-            bottom: -50px;
-            font-size: 25px;
-            animation: rise 7s linear infinite;
-            opacity: 0.8;
-            z-index: 1;
-        }
-
-        .floating-heart:nth-child(1) {
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-heart:nth-child(2) {
-            left: 25%;
-            animation-delay: 2s;
-        }
-
-        .floating-heart:nth-child(3) {
-            left: 40%;
-            animation-delay: 4s;
-        }
-
-        .floating-heart:nth-child(4) {
-            left: 60%;
-            animation-delay: 1s;
-        }
-
-        .floating-heart:nth-child(5) {
-            left: 75%;
-            animation-delay: 3s;
-        }
-
-        .floating-heart:nth-child(6) {
-            left: 90%;
-            animation-delay: 5s;
-        }
-
-        /* ---------------- ANIMATIONS ---------------- */
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.18);
-            }
-        }
-
-        @keyframes floatHeart {
-            0%, 100% {
-                transform: translateY(0) rotate(-10deg);
-            }
-
-            50% {
-                transform: translateY(-18px) rotate(10deg);
-            }
-        }
-
-        @keyframes stickerFloat {
-            0%, 100% {
-                transform: translateY(0) rotate(-5deg);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(5deg);
-            }
-        }
-
-        @keyframes rise {
-            0% {
-                transform: translateY(0) scale(0.5);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-110vh) scale(1.3) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes appear {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ---------------- MOBILE ---------------- */
-
-        @media (max-width: 600px) {
-
-            .card {
-                padding: 35px 20px;
-            }
-
-            h1 {
-                font-size: 29px;
-            }
-
-            .main-heart {
-                font-size: 80px;
-            }
-
-            .big-heart {
-                font-size: 65px;
-            }
-
-            .heart2,
-            .heart3 {
-                font-size: 55px;
-            }
-
-            .sticker {
-                font-size: 32px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- HUGE HEART STICKERS -->
+```
+<!-- HUGE HEART STICKERS -->
 
-    <div class="big-heart heart1">💗</div>
-    <div class="big-heart heart2">💖</div>
-    <div class="big-heart heart3">💕</div>
-    <div class="big-heart heart4">💞</div>
+<div class="big-heart heart1">💗</div>
+<div class="big-heart heart2">💖</div>
+<div class="big-heart heart3">💕</div>
+<div class="big-heart heart4">💞</div>
 
+<!-- FLOATING HEARTS -->
 
-    <!-- FLOATING HEARTS -->
+<div class="floating-heart">💗</div>
+<div class="floating-heart">💕</div>
+<div class="floating-heart">💖</div>
+<div class="floating-heart">💓</div>
+<div class="floating-heart">💘</div>
+<div class="floating-heart">💞</div>
 
-    <div class="floating-heart">💗</div>
-    <div class="floating-heart">💕</div>
-    <div class="floating-heart">💖</div>
-    <div class="floating-heart">💓</div>
-    <div class="floating-heart">💘</div>
-    <div class="floating-heart">💞</div>
+<!-- MAIN CARD -->
 
+<div class="card">
 
-    <!-- MAIN CARD -->
+    <!-- CUTE STICKERS -->
 
-    <div class="card">
+    <div class="sticker bear">🧸</div>
+    <div class="sticker kiss">💋</div>
+    <div class="sticker sparkle">✨</div>
+    <div class="sticker love-sticker">🥰</div>
 
-        <!-- CUTE STICKERS -->
+    <!-- MAIN HEART -->
 
-        <div class="sticker bear">🧸</div>
-        <div class="sticker kiss">💋</div>
-        <div class="sticker sparkle">✨</div>
-        <div class="sticker love-sticker">🥰</div>
-
-
-        <!-- MAIN HEART -->
-
-        <div class="main-heart">
-            ❤️
-        </div>
-
-
-        <h1>
-            Happy Boyfriend's Day 💗
-        </h1>
-
-        <div class="subtitle">
-            To my favourite boy in the whole world 🥹🫶🏻
-        </div>
-
-
-        <!-- MESSAGE -->
-
-        <div class="message">
-
-            Dear Omieeeeeeeeeeeeee...... 🥹
-
-            <br>
-
-            You are my
-            <span class="pink">favourite person</span>,
-            my safe place,
-            my biggest smile
-            and my home. 🏠💗
-
-            <br><br>
-
-            Thank you for loving me,
-            understanding me,
-            making me smile
-            and simply being <span class="pink">YOU</span>. 🫶🏻
-
-            <br><br>
-
-            No matter how far you are,
-            you will always have
-            the biggest piece of my heart. 💕
-
-            <br><br>
-
-            <span class="pink">
-                I love you more than you know. ❤️
-            </span>
-
-        </div>
-
-
-        <!-- BUTTON -->
-
-        <button onclick="showLove()">
-            💌 Open My Little Surprise
-        </button>
-
-
-        <!-- SECRET -->
-
-        <div id="secret">
-
-            🥹💗 YOU ARE STUCK WITH ME FOREVER 💗🥹
-
-            <br><br>
-
-            I LOVE YOUUUU SOOOOO MUCHHHH! 💋💞
-
-            <br>
-
-            Forever & always,
-            my boy. 🫶🏻❤️
-            -Your's Adiiiiiii 
-
-        </div>
-
+    <div class="main-heart">
+        ❤️
     </div>
 
+    <h1>
+        Happy Boyfriend's Day 💗
+    </h1>
 
-    <script>
+    <div class="subtitle">
+        To my favourite boy in the whole world 🥹🫶🏻
+    </div>
 
-        function showLove() {
+    <!-- MESSAGE -->
 
-            document.getElementById("secret").style.display = "block";
+    <div class="message">
+        Dear Omieeeeeeeeeeeeee...... 🥹
+        <br><br>
 
-            // Create LOTS of hearts
-            for (let i = 0; i < 35; i++) {
+        You are my
+        <span class="pink">favourite person</span>,
+        my safe place,
+        my biggest smile
+        and my home. 🏠💗
 
-                let heart = document.createElement("div");
+        <br><br>
 
-                const hearts = [
-                    "💗",
-                    "💖",
-                    "💕",
-                    "💓",
-                    "💞",
-                    "💘",
-                    "❤️",
-                    "🥰"
-                ];
+        Thank you for loving me,
+        understanding me,
+        making me smile
+        and simply being <span class="pink">YOU</span>. 🫶🏻
 
-                heart.innerHTML =
-                    hearts[Math.floor(Math.random() * hearts.length)];
+        <br><br>
 
-                heart.style.position = "fixed";
+        No matter how far you are,
+        you will always have
+        the biggest piece of my heart. 💕
 
-                heart.style.left =
-                    Math.random() * 100 + "vw";
+        <br><br>
 
-                heart.style.bottom = "-50px";
+        <span class="pink">
+            I love you more than you know. ❤️
+        </span>
+    </div>
 
-                heart.style.fontSize =
-                    (20 + Math.random() * 35) + "px";
+    <!-- BUTTON -->
 
-                heart.style.zIndex = "50";
+    <button onclick="showLove()">
+        💌 Open My Little Surprise
+    </button>
 
-                heart.style.animation =
-                    "rise " +
-                    (3 + Math.random() * 3) +
-                    "s linear forwards";
+    <!-- SECRET -->
 
-                document.body.appendChild(heart);
+    <div id="secret">
+        🥹💗 YOU ARE STUCK WITH ME FOREVER 💗🥹
+        <br><br>
 
-                setTimeout(() => {
-                    heart.remove();
-                }, 6000);
-            }
+        I LOVE YOUUUU SOOOOO MUCHHHH! 💋💞
+        <br><br>
+
+        Forever & always,
+        my boy. 🫶🏻❤️
+        <br><br>
+
+        - Yours Adiiiiiii
+    </div>
+
+</div>
+
+<script>
+    function showLove() {
+
+        document.getElementById("secret").style.display = "block";
+
+        // Create LOTS of hearts
+
+        for (let i = 0; i < 35; i++) {
+
+            let heart = document.createElement("div");
+
+            const hearts = [
+                "💗",
+                "💖",
+                "💕",
+                "💓",
+                "💞",
+                "💘",
+                "❤️",
+                "🥰"
+            ];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.position = "fixed";
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.bottom = "-50px";
+
+            heart.style.fontSize =
+                (20 + Math.random() * 35) + "px";
+
+            heart.style.zIndex = "50";
+
+            heart.style.animation =
+                "rise " +
+                (3 + Math.random() * 3) +
+                "s linear forwards";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
         }
-
-    </script>
+    }
+</script>
+```
 
 </body>
 </html>
-```
